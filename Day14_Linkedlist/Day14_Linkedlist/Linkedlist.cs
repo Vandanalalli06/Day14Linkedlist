@@ -39,6 +39,14 @@ namespace Day14_Linkedlist
                 temp = temp.next;
             }
         }
+        public Node RemoveFirstNode()
+        {
+            if (this.head == null)
+                return null;
+            this.head = this.head.next;
+            return this.head;
+        }
+
         internal Node InsertAtParticularPosition(int PreviousData, Node Newdata)
         {
             Node temp = this.head;
