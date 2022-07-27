@@ -25,37 +25,36 @@ namespace Day14_Linkedlist
             }
             Console.WriteLine("{0} inserted into the linked list", node.data);
         }
-        public void AddatFirst(int element)
+        public void Display()
         {
-            Node newnode = new Node(element);
-            newnode.next = head;
-            head = newnode;
-        }
-        public void append(int newdata)
-        {
-            Node new_node = new Node(newdata);
-            if (head == null)
+            Node temp = this.head;
+            if (temp == null)
             {
-                head = new Node(newdata);
+                Console.WriteLine("Linked list is empty");
                 return;
             }
-            new_node.next = null;
-            Node last = head;
-            while (last.next != null)
-                last = last.next;
-            last.next = new_node;
-            return;
-        }
-        public void printList()
-        {
-            Node tnode = head;
-            while (tnode != null)
+            while (temp != null)
             {
-                Console.WriteLine(tnode.data + " ");
-                tnode = tnode.next;
+                Console.Write(temp.data + "->");
+                temp = temp.next;
             }
+        }
+        internal Node InsertAtParticularPosition(int PreviousData, Node Newdata)
+        {
+            Node temp = this.head;
+            while (temp != null) //
+            {
+                while (temp.data == PreviousData)
+                {
+                    Node newnode = temp.next;
+                    temp.next = Newdata;
+                    temp.next.next = newnode;
+
+                    break;
+                }
+                temp = temp.next;
+            }
+            return head;
         }
     }
 }
-
-        
